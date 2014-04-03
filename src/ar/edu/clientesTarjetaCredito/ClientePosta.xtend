@@ -51,7 +51,13 @@ class ClientePosta implements Cliente {
 	 * METODOS DE NEGOCIO
 	 */
 	override comprar(int monto) {
-		throw new UnsupportedOperationException();
+		if (adheridoSafeShop && monto > montoMaximoSafeShop) {
+			throw new BusinessException("El monto excede el máximo permitido")
+		}
+		saldo = saldo + monto
+		if (adheridoPromocion && monto > MONTO_MINIMO) {
+			puntosAcumulados = puntosAcumulados + PUNTOS_PROMOCION
+		}
 	}
 
 	override pagarVencimiento(int monto) {
