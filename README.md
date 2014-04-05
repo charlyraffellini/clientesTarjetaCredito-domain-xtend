@@ -8,7 +8,7 @@ Para usarlo tenes que ir hasta tu workspace `cd path/de/mi/workspace`.
 
 Depués tenes que hacer un clone `git clone https://github.com/charlyraffellini/clientesTarjetaCredito-domain-xtend.git`.
 
-Vamos a la carpeta del proyecto `cd path/de/mi/workspace ./clientesTarjetaCredito-domain-xtend`
+Vamos a la carpeta del proyecto `cd ./clientesTarjetaCredito-domain-xtend`
 
 El ejercicio consiste en pasos para ir al step 0 hacemos
 
