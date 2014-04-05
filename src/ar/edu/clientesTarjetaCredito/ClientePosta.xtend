@@ -1,71 +1,33 @@
 package ar.edu.clientesTarjetaCredito
 
-import java.util.ArrayList
-import java.util.List
+import ar.edu.clientesTarjetaCredito.Cliente
 
 class ClientePosta implements Cliente {
-	@Property int saldo
-	int puntosAcumulados
-	List<CondicionComercial> condicionesComerciales
-
-	new(int unSaldo) {
-		initialize
-		saldo = unSaldo	
-	}
 	
-	new(int unSaldo, int unMontoMaximoSafeShop) {
-		initialize
-		saldo = unSaldo
-		agregarSafeShop(unMontoMaximoSafeShop)
-	}
-
-	new(int unSaldo, boolean adhierePromocion) {
-		initialize
-		saldo = unSaldo
-		if (adhierePromocion) {
-			agregarPromocion
-		}
-	}
-
-	def void initialize() {
-		condicionesComerciales = new ArrayList<CondicionComercial>
+	@Property int saldo
+	
+	new() {
 		saldo = 0
 	}
-
-	def agregarCondicionComercial(CondicionComercial condicionComercial) {
-		condicionesComerciales.add(condicionComercial)
-	}
-
-	def void agregarSafeShop(int montoMaximoSafeShop) {
-		this.agregarCondicionComercial(new SafeShop(montoMaximoSafeShop))
+	
+	new(int unSaldo) {
+		saldo = unSaldo
 	}
 	
-	def void agregarPromocion() {
-		condicionesComerciales.add(new Promocion)
-	}
-
-	/**
-	 * METODOS DE NEGOCIO
-	 */
 	override comprar(int monto) {
-		condicionesComerciales.forEach [ condicion | condicion.comprar(monto, this) ]
 		saldo = saldo + monto
 	}
-
+	
 	override pagarVencimiento(int monto) {
-		saldo = saldo - monto
+		throw new UnsupportedOperationException;
 	}
-
+	
 	override esMoroso() {
 		saldo > 0
 	}
-
+	
 	override getPuntos() {
-		puntosAcumulados
-	}
-
-	def void agregarPuntos(int unosPuntos) {
-		puntosAcumulados = puntosAcumulados + unosPuntos
+		0
 	}
 	
 }
