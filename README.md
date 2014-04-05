@@ -45,7 +45,7 @@ En este step vas a encontrar que los tests siguen siendo iguales pero el dominio
 
 Hemos decidido cambiar la implementación, quisimos implementar una solución usando Strategies pero quedamos en el camino.
 
-Queda a tu criterio hacer las modificaciones necesarias para que este los tests den <div style="color:#009900;"> verde. </div>
+Queda a tu criterio hacer las modificaciones necesarias para que este los tests den verde.
 
 ---
 ### Step 3
