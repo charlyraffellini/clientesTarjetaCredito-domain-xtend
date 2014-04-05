@@ -33,22 +33,23 @@ class ClientePosta implements Cliente {
 	}
 
 	def agregarCondicionComercial(CondicionComercial condicionComercial) {
-		throw new UnsupportedOperationException;
+		condicionesComerciales.add(condicionComercial)
 	}
 
 	def void agregarSafeShop(int montoMaximoSafeShop) {
-		throw new UnsupportedOperationException;
+		this.agregarCondicionComercial(new SafeShop(montoMaximoSafeShop))
 	}
 	
 	def void agregarPromocion() {
-		throw new UnsupportedOperationException;
+		condicionesComerciales.add(new Promocion)
 	}
 
 	/**
 	 * METODOS DE NEGOCIO
 	 */
 	override comprar(int monto) {
-		throw new UnsupportedOperationException;
+		condicionesComerciales.forEach [ condicion | condicion.comprar(monto, this) ]
+		saldo = saldo + monto
 	}
 
 	override pagarVencimiento(int monto) {
