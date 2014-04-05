@@ -1,16 +1,12 @@
 package ar.edu.clientesTarjetaCredito
 
-import ar.edu.clientesTarjetaCredito.exceptions.BusinessException
+import java.util.ArrayList
+import java.util.List
 
 class ClientePosta implements Cliente {
-	static int MONTO_MINIMO = 50
-	static int PUNTOS_PROMOCION = 15
-
 	@Property int saldo
-	boolean adheridoPromocion
-	boolean adheridoSafeShop
 	int puntosAcumulados
-	int montoMaximoSafeShop
+	List<CondicionComercial> condicionesComerciales
 
 	new(int unSaldo) {
 		initialize
@@ -32,32 +28,27 @@ class ClientePosta implements Cliente {
 	}
 
 	def void initialize() {
+		condicionesComerciales = new ArrayList<CondicionComercial>
 		saldo = 0
-		montoMaximoSafeShop = 0
-		adheridoSafeShop = false
-		adheridoPromocion = false
+	}
+
+	def agregarCondicionComercial(CondicionComercial condicionComercial) {
+		throw new UnsupportedOperationException;
 	}
 
 	def void agregarSafeShop(int montoMaximoSafeShop) {
-		this.adheridoSafeShop = true
-		this.montoMaximoSafeShop = montoMaximoSafeShop
+		throw new UnsupportedOperationException;
 	}
-
+	
 	def void agregarPromocion() {
-		this.adheridoPromocion = true
+		throw new UnsupportedOperationException;
 	}
 
 	/**
 	 * METODOS DE NEGOCIO
 	 */
 	override comprar(int monto) {
-		if (adheridoSafeShop && monto > montoMaximoSafeShop) {
-			throw new BusinessException("El monto excede el máximo permitido")
-		}
-		saldo = saldo + monto
-		if (adheridoPromocion && monto > MONTO_MINIMO) {
-			puntosAcumulados = puntosAcumulados + PUNTOS_PROMOCION
-		}
+		throw new UnsupportedOperationException;
 	}
 
 	override pagarVencimiento(int monto) {
@@ -72,4 +63,8 @@ class ClientePosta implements Cliente {
 		puntosAcumulados
 	}
 
+	def void agregarPuntos(int unosPuntos) {
+		puntosAcumulados = puntosAcumulados + unosPuntos
+	}
+	
 }
