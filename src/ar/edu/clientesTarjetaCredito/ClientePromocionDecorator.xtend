@@ -14,7 +14,10 @@ class ClientePromocionDecorator extends ClienteDecorator {
 	}
 	
 	override comprar(int monto) {
-		throw new UnsupportedOperationException;
+		decorado.comprar(monto)
+		if (monto > MONTO_MINIMO) {
+			puntosAcumulados = puntosAcumulados + PUNTOS_PROMOCION
+		}
 	}
 	
 	override def getPuntos() {

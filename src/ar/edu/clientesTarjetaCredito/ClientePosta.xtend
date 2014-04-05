@@ -19,7 +19,7 @@ class ClientePosta implements Cliente {
 	}
 	
 	override pagarVencimiento(int monto) {
-		throw new UnsupportedOperationException;
+		saldo = saldo - monto
 	}
 	
 	override esMoroso() {

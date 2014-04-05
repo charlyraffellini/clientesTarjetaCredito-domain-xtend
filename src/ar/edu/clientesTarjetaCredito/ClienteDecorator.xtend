@@ -7,19 +7,19 @@ abstract class ClienteDecorator implements Cliente {
 	@Property Cliente decorado
 	
 	new(Cliente cliente) {
-		throw new UnsupportedOperationException;
+		decorado = cliente
 	}
 	
 	override pagarVencimiento(int monto) {
-		throw new UnsupportedOperationException;
+		decorado.pagarVencimiento(monto)
 	}
 	
 	override getPuntos() {
-		throw new UnsupportedOperationException;
+		decorado.puntos
 	} 
 	
 	override getSaldo() {
-		throw new UnsupportedOperationException;
+		decorado.saldo
 	}
 	
 	override esMoroso() {

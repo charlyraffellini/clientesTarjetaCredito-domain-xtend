@@ -12,7 +12,9 @@ class ClienteSafeShopDecorator extends ClienteDecorator {
 	}
 	
 	override comprar(int monto) {
-		throw new UnsupportedOperationException;
+		if (monto > maximoCompra) {
+			throw new BusinessException("El monto excede el máximo permitido")
+		}
+		decorado.comprar(monto)
 	}
-	
 }
